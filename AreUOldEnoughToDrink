@@ -1,0 +1,182 @@
+from datetime import date
+
+# Screendelete
+
+from os import system, name
+
+def clear():
+    if name == "nt":
+        _ = system("cls")
+
+clear()
+
+# Import Sys
+
+import sys
+
+# Funktion "age" wird erzeugt und berechnet das aktuelle Datum
+
+def age(birthdate):
+    today = date.today()
+    age = today.year - birthdateyear - ((today.month, today.day) < (birthdatemonth, birthdateday))
+    return age
+
+# Lists:
+
+language_german = ["1","1.","German","Deutsch"]
+language_english = ["2", "2.", "English","Englisch"]
+
+country_german = ["Germany","1","1.","Deutschland"]
+country_england = ["England","2","2.","UK","Uk","United Kingdom"]
+country_austria = ["Austria","Österreich","5","5."]
+country_canada = ["Canada","4","4."]
+country_america = ["USA","3","3.","United States","United States of America","Amerika","America"]
+
+gender_list_male = ["M","Male","Mann","Männlich","Junge","m"]
+gender_list_female = ["F","Female","Frau","Weiblich","Mädchen","w","f"]
+
+# Choose the Language
+
+print("Choose ur Language")
+print()
+print("1. Deutsch")
+print("2. English")
+print()
+language = input("Enter: ")
+
+if language in language_german:
+ language_country_choose = "Wählen Sie nun das Land in dem Sie aktuell verweilen: "
+
+elif language in language_english:
+ language_country_choose = "Now choose the country you are staying in: "
+
+else:
+ print()
+ print("Thats not an viable option.")
+ print()
+ input("Please press <Enter>")
+
+ sys.exit()
+
+# Choose the country and defining what the legal age of drinking is
+
+clear()
+
+print(language_country_choose)
+print()
+print("1. Germany")
+print("2. England/Uk")
+print("3. USA")
+print("4. Canada")
+print("5. Austria")
+print()
+country = str(input())
+
+clear()
+
+if country in country_german:
+ legal_drinking_age = "18"
+ country = "Deutschland"
+
+elif country in country_england:
+ legal_drinking_age = "18"
+ country = "England"
+
+elif country in country_austria:
+ legal_drinking_age = "18"
+ country = "Österreich"
+
+elif country in country_america:
+ legal_drinking_age = "21"
+ country = "America"
+
+elif country in country_canada:
+ legal_drinking_age = "19"
+ country = "Canada"
+
+else:
+ print()
+ print("Thats not an viable option.")
+ print()
+ input("Please press <Enter>")
+
+ sys.exit()
+
+# translation
+
+if language in language_german:
+
+ language_start_sentence = "Hallo "
+ language_name = "Geben Sie Ihren Vornamen ein: "
+ language_surname = "Geben Sie Ihren Namen ein: "
+ language_birthdateyear = "Geben Sie Ihr Geburtsjahr ein (XXXX): "
+ language_birthdatemonth = "Geben Sie Ihren Geburtsmonat ein (1-12): "
+ language_birthdateday = "Geben Sie Ihrenn Geburtstag ein (1-31): "
+ language_gender_male = "Herr "
+ language_gender_female = "Frau "
+ language_gender = "Bitte wählen Sie Ihr Geschlecht: "
+ language_drink_positive = ("Sie dürfen legal in " + country + " trinken!")
+ language_drink_negative = ("Sie dürfen nicht in " + country + " trinken!")
+ language_currentage = "Aktuelles Alter: "
+
+elif language in language_english:
+
+ language_start_sentence = "Hello "
+ language_name = "Enter ur name: "
+ language_surname = "Enter ur surname: "
+ language_birthdateyear = "Enter ur year of birth (XXXX): "
+ language_birthdatemonth = "Enter ur month of birth (1-12): "
+ language_birthdateday = "Enter ur day of birth (1-31): "
+ language_gender_male = "Mr. "
+ language_gender_female = "Mrs. "
+ language_gender = "Choose your Gender: "
+ language_drink_positive = ("Sie dürfen legal in " + country + " trinken!")
+ language_drink_negative = ("Sie dürfen nicht in " + country + " trinken!")
+ language_currentage = "Current Age: "
+
+else:
+ print()
+ print("Thats not an viable option.")
+ print()
+ input("Please press <Enter>")
+
+ sys.exit()
+
+# Programm
+
+print()
+name = input(language_name)
+surname = input(language_surname)
+gender = input(language_gender)
+
+if gender in gender_list_male:
+    salutation = language_gender_male
+elif gender in gender_list_female:
+    salutation = language_gender_female
+else:
+    print()
+    print("Thats not an viable option.")
+    print()
+    input("Please press <Enter>")
+
+    sys.exit()
+
+birthdateyear = int(input(language_birthdateyear))
+birthdatemonth = int(input(language_birthdatemonth))
+birthdateday = int(input(language_birthdateday))
+currentage = int(age(date(birthdateday, birthdatemonth, birthdateday)))
+
+print()
+print("--------------------------------------------------------")
+print()
+
+print(language_start_sentence + salutation + name + " " + surname)
+print(language_currentage + str(currentage))
+
+if currentage >= int(legal_drinking_age):
+    print(language_drink_positive)
+else:
+    print(language_drink_negative)
+
+print()
+print("--------------------------------------------------------")
